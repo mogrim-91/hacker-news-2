@@ -5,3 +5,9 @@
 body {
   font-family: sans-serif;
 }
+
+.signupForm {
+  display: flex;
+
+  color: green;
+}
