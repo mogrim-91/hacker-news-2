@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
-$pdo = new PDO('sqlite:../database/database.db');
 if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
     $username = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
