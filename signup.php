@@ -8,10 +8,10 @@ require __DIR__ . '/views/header.php'; ?>
     <form action="app/users/signup.php" method="post">
         <div class="signupForm">
             <label for="username">Username</label>
-            <input type="text" type="username" name="username" id="username" placeholder="Username" required>
+            <input type="text" name="username" id="username" placeholder="Username" required>
 
             <label for="email">Email</label>
-            <input type="email" type="email" name="email" id="email" placeholder="Guy@threepwood.lol" required>
+            <input type="email" name="email" id="email" placeholder="Guy@threepwood.lol" required>
 
             <label for="password">Password</label>
             <input type="password" type="password" name="password" id="password" required>
