@@ -1,7 +1,5 @@
-<?php
-
-require __DIR__ . '/app/autoload.php';
-require __DIR__ . '/views/header.php'; ?>
+<?php require __DIR__ . '/app/autoload.php'; ?>
+<?php require __DIR__ . '/views/header.php'; ?>
 
 <?php if (!authenticated()) {
     Header('Location:/index.php');
@@ -26,6 +24,7 @@ require __DIR__ . '/views/header.php'; ?>
 
     <p><?php print_r($_SESSION['loggedIn']); ?></p>
     <p><?php print_r($_FILES); ?></p>
+    <a href="createpost.php">Make a post</a>
     <a href="logout.php">Log out</a>
 
 

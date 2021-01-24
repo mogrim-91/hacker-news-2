@@ -1,7 +1,5 @@
-<?php
-
-require __DIR__ . '/app/autoload.php';
-require __DIR__ . '/views/header.php'; ?>
+<?php require __DIR__ . '/app/autoload.php'; ?>
+<?php require __DIR__ . '/views/header.php'; ?>
 
 <main>
     <h1>Sign up</h1>
@@ -14,7 +12,7 @@ require __DIR__ . '/views/header.php'; ?>
             <input type="email" name="email" id="email" placeholder="Guy@threepwood.lol" required>
 
             <label for="password">Password</label>
-            <input type="password" type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password" required>
             <button type="submit">Sign up</button>
         </div>
 
