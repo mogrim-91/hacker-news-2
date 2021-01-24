@@ -13,25 +13,25 @@ require __DIR__ . '/views/header.php'; ?>
         <div class="editForm">
 
             <?php if (isset($_SESSION['errorMessage'])) : ?>
-                <strong><?php echo $_SESSION['errorMesssage']; ?></strong>
+                <strong><?php echo $_SESSION['errorMessage']; ?></strong>
                 <?php unset($_SESSION['errorMessage']); ?>
             <?php endif; ?>
 
 
             <label for="newUsername">Change username</label>
-            <input type="text" name="newUsername" id="newUsername" placeholder="<?php echo $user['username']; ?>">
+            <input type="text" name="newUsername" id="newUsername">
 
             <label for="newEmail">Email</label>
-            <input type="email" name="newEmail" id="newEmail" placeholder="<?php echo $user['email']; ?>">
+            <input type="email" name="newEmail" id="newEmail">
 
-            <label for="biography">Change biography</label>
-            <input type="text" name="biography" id="biography" placeholder="<?php echo $user['biography']; ?>">
+            <label for="newBiography">Change biography</label>
+            <input type="text" name="newBiography" id="newBiography">
 
             <label for="newPassword">Change Password</label>
             <input type="password" name="newPassword" id="newPassword">
 
             <label for="password">Confirm by entering your old password</label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" required>
 
 
             <button type="submit">Edit profile</button>

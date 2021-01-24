@@ -23,6 +23,8 @@ if (isset($_POST['username'], $_POST['password'])) {
         $_SESSION['authenticated'] = "Successfully logged in!";
         $_SESSION['loggedIn'] = $user;
         // header('Location: ../../login.php');
+    } else {
+        $_SESSION['noUser'] = "Wrong password";
     }
 }
 header('Location: ../../login.php');

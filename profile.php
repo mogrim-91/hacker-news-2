@@ -25,7 +25,7 @@ require __DIR__ . '/views/header.php'; ?>
 
 
     <p><?php print_r($_SESSION['loggedIn']); ?></p>
-
+    <a href="logout.php">Log out</a>
 
 
 </main>
