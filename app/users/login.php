@@ -16,11 +16,12 @@ if (isset($_POST['username'], $_POST['password'])) {
 
     if (!$user) {
         $_SESSION['noUser'] = "Couldn't find any user with that username";
-        header('Location: ../../signup.php');
+        header('Location: ../../login.php');
     }
 
     if (password_verify($password, $user['password'])) {
         $_SESSION['authenticated'] = "Successfully logged in!";
+        // header('Location: ../../login.php');
     }
 }
 header('Location: ../../login.php');
