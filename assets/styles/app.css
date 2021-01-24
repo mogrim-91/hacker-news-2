@@ -11,3 +11,13 @@ body {
 
   color: green;
 }
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
