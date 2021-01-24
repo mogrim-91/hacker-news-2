@@ -1,15 +1,13 @@
 <?php
 
+declare(strict_types=1);
+require __DIR__ . '/app/autoload.php';
+
+
+
 
 // clearCookie();
-unset($_SESSION);
-session_destroy();
+unset($_SESSION['loggedIn']);
 unset($user);
 
-?>
-<script type="text/javascript">
-    document.cookie = "PHPSESSID=;Path=/cv;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-</script>
-
-<?php
 header('Location: /index.php');
