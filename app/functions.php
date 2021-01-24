@@ -16,3 +16,10 @@ function getPosts(PDO $pdo)
 
     return $posts;
 }
+
+function deletePost(PDO $pdo, int $id)
+{
+    $statement = $pdo->prepare('DELETE FROM posts WHERE id = :id');
+    $statement->bindParam(':id', $id, PDO::PARAM_INT);
+    $statement->execute();
+}
