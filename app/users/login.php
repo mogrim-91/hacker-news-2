@@ -21,6 +21,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 
     if (password_verify($password, $user['password'])) {
         $_SESSION['authenticated'] = "Successfully logged in!";
+        $_SESSION['loggedIn'] = $user;
         // header('Location: ../../login.php');
     }
 }

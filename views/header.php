@@ -11,4 +11,4 @@
 
 <body>
     <p>Hacker News!</p>
-    <a href="/login.php">Login</a>
+    <?php require __DIR__ . '/navigation.php'; ?>
