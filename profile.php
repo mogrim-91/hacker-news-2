@@ -13,7 +13,7 @@ require __DIR__ . '/views/header.php'; ?>
         <?php unset($_SESSION['message']); ?>
     <?php endif; ?>
     <h1><?php echo $user['username']; ?></h1>
-    <img src="<?php echo $user['avatar']; ?>" width=100px>
+    <img src="/app/users/uploads/<?php echo $user['avatar']; ?>" width="100px">
     <p>Email: <?php echo $user['email']; ?></p>
     <p>Biography: <?php echo $user['biography']; ?></p>
     <a href="/editprofile.php">Edit profile</a>
@@ -25,6 +25,7 @@ require __DIR__ . '/views/header.php'; ?>
 
 
     <p><?php print_r($_SESSION['loggedIn']); ?></p>
+    <p><?php print_r($_FILES); ?></p>
     <a href="logout.php">Log out</a>
 
 

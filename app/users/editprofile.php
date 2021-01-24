@@ -5,6 +5,26 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 // $user = $_SESSION['loggedIn'];
+if (isset($_FILES['avatar'])) {
+    $avatar = $_FILES['avatar'];
+    $username = $_SESSION['loggedIn']['username'];
+
+    $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->execute();
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $imageName = $user['username'] . "id" . $user['id'] . ".png";
+    $destination = __DIR__ . '/uploads/' . $imageName;
+
+    move_uploaded_file($avatar['tmp_name'], $destination);
+
+    $statement = $pdo->prepare('UPDATE users SET avatar = :image WHERE id = :id');
+    $statement->bindParam(':image', $imageName, PDO::PARAM_STR);
+    $statement->bindParam(':id', $user['id'], PDO::PARAM_INT);
+    $statement->execute();
+    header('Location: ../../profile.php');
+}
 
 
 
@@ -24,6 +44,7 @@ if (isset($_POST['password'])) {
     }
 
     if (password_verify($password, $user['password'])) {
+        //Changing Username
         if (isset($_POST['newUsername']) && $_POST['newUsername'] !== "") {
             $username = trim(filter_var($_POST['newUsername'], FILTER_SANITIZE_STRING));
 
@@ -35,7 +56,7 @@ if (isset($_POST['password'])) {
                 // $_SESSION['loggedIn']['username'] = $username;
             }
         }
-
+        //Changing Email
         if (isset($_POST['newEmail']) && $_POST['newEmail'] !== "") {
             $email = trim(filter_var($_POST['newEmail'], FILTER_SANITIZE_EMAIL));
 
@@ -47,7 +68,7 @@ if (isset($_POST['password'])) {
                 // $_SESSION['loggedIn']['email'] = $email;
             }
         }
-
+        // Changing Biography
         if (isset($_POST['newBiography']) && $_POST['newBiography'] !== "") {
             $biography = trim(filter_var($_POST['newBiography'], FILTER_SANITIZE_STRING));
 
