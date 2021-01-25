@@ -19,16 +19,16 @@
                         <button class="deletePost" name="delete" id="delete" type="submit" value="<?php echo $post['id']; ?>">Delete</button>
                     </form>
                 <?php endif; ?>
-                <p>Upvotes:
+                <p>Upvotes:<?php echo countUpvotes($pdo, $post['id']); ?>
                 </p>
 
                 <?php if (hasUpvoted($pdo, $post['id'], $_SESSION['loggedIn']['id'])) : ?>
-                    <form action="/app/upvotes/removevote.php" method="post">
-                        <button class="upvote" name="upvote" id="upvote" type="submit" value="<?php echo $post['id']; ?>">remove upvote</button>
+                    <form action="/app/upvotes/removeupvote.php" method="post">
+                        <button class="removeUpvote" name="removeUpvote" id="removeUpvote" type="submit" value="<?php echo $post['id']; ?>">Remove upvote</button>
                     </form>
                 <?php else : ?>
                     <form action="/app/upvotes/upvote.php" method="post">
-                        <button class="upvote" name="upvote" id="upvote" type="submit" value="<?php echo $post['id']; ?>">upvote</button>
+                        <button class="upvote" name="upvote" id="upvote" type="submit" value="<?php echo $post['id']; ?>">Upvote</button>
                     </form>
                 <?php endif; ?>
             <?php endif; ?>

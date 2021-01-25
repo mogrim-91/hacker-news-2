@@ -49,3 +49,16 @@ function hasUpvoted(PDO $pdo, int $post_id, int $user_id): bool
     }
     return false;
 }
+
+function countUpvotes(PDO $pdo, int $post_id)
+{
+    $statement = $pdo->prepare('SELECT COUNT(post_id) FROM upvotes WHERE post_id = :post_id');
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $count = $statement->fetchColumn();
+    if ($count) {
+        return $count;
+    }
+    return 0;
+}
