@@ -7,14 +7,16 @@
 
 <main>
     <h1>Edit Comment</h1>
-    <form action="app/comments/editcomment.php" method="post">
-        <div class="editCommentForm">
+    <div class="editCommentForm">
+        <form action="app/comments/editcomment.php" method="post">
+
             <label for="editText">Edit text</label>
             <input type="text" name="editText" id="editText">
-            <button type="submit">Edit comment</button>
-        </div>
+            <button type="submit" name="editCommentId" id="editCommentId" value="<?php echo $_POST['editCommentId']; ?>">Edit comment</button>
 
-    </form>
+
+        </form>
+    </div>
 </main>
 
 
