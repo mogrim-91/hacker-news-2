@@ -9,7 +9,6 @@ var_dump($_POST['comment']);
 var_dump($_POST['commentPostId']);
 
 if (isset($_POST['comment'], $_POST['commentPostId'])) {
-
     $text = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
     $post_id = trim(filter_var($_POST['commentPostId'], FILTER_SANITIZE_STRING));
     $user_id = $_SESSION['loggedIn']['id'];
