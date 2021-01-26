@@ -47,7 +47,16 @@
                         <strong>By: <?php echo $comment['author']; ?></strong>
                         <p> <?php echo $comment['text']; ?></p>
                         <p> Posted: <?php echo $comment['date']; ?></p>
-
+                        <?php if (authenticated()) : ?>
+                            <?php if ($_SESSION['loggedIn']['id'] === $comment['user_id']) : ?>
+                                <form action="editcomment.php" method="post">
+                                    <button class="editComment" name="editCommentId" id="editCommentId" type="submit" value="<?php echo $comment['id']; ?>">Edit comment</button>
+                                </form>
+                                <form action="/app/comments/deletecomment.php" method="post">
+                                    <button class="deleteComment" name="deleteCommentId" id="deleteCommentId" type="submit" value="<?php echo $comment['id']; ?>">Delete comment</button>
+                                </form>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
 
                 <?php endforeach; ?>

@@ -1,14 +1,15 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
-
+<?php var_dump($_POST['editPostId']); ?>
 <?php if (!authenticated()) {
     Header('Location:/index.php');
 } ?>
 
 <main>
     <h1>Edit Post</h1>
-    <form action="app/posts/editpost.php" method="post">
-        <div class="editPostForm">
+    <div class="editPostForm">
+        <form action="app/posts/editpost.php" method="post">
+
             <label for="editTitle">Edit title</label>
             <input type="text" name="editTitle" id="editTitle">
 
@@ -17,10 +18,11 @@
 
             <label for="editDescription">Edit description</label>
             <input type="text" name="editDescription" id="editDescription">
-            <button type="submit">Edit post</button>
-        </div>
+            <button type="submit" name="editPostId" id="editPostId" type="submit" value="<?php echo $_POST['editPostId']; ?>">Edit post</button>
 
-    </form>
+
+        </form>
+    </div>
 </main>
 
 
