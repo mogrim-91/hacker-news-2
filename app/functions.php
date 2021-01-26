@@ -62,3 +62,17 @@ function countUpvotes(PDO $pdo, int $post_id)
     }
     return 0;
 }
+
+function getComments(PDO $pdo, $post_id)
+{
+    $statement = $pdo->prepare('SELECT * FROM comments WHERE post_id = :post_id ORDER BY date ASC');
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if ($comments) {
+        return $comments;
+    }
+
+    return false;
+}

@@ -10,5 +10,5 @@
 </head>
 
 <body>
-    <p>Hacker News!</p>
+    <a href="/index.php">Hacker News!</a>
     <?php require __DIR__ . '/navigation.php'; ?>

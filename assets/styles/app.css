@@ -21,3 +21,10 @@ main {
   flex-direction: column;
   width: 30%;
 }
+article {
+  border: 1px solid black;
+}
+div {
+  border: 1px solid black;
+}
+

@@ -49,3 +49,5 @@
 
     </form>
 </main>
+
+<?php require __DIR__ . '/views/footer.php';
