@@ -9,12 +9,12 @@
         <article>
             <div class="postSection">
                 <div class="upvotes">
-                    <p>Upvotes:<?php echo countUpvotes($pdo, $post['id']); ?></p>
+                    <h2><?php echo countUpvotes($pdo, $post['id']); ?></h2>
 
                     <?php if (authenticated()) : ?>
                         <?php if (hasUpvoted($pdo, $post['id'], $_SESSION['loggedIn']['id'])) : ?>
                             <form action="/app/upvotes/removeupvote.php" method="post">
-                                <button class="removeUpvote" name="removeUpvote" id="removeUpvote" type="submit" value="<?php echo $post['id']; ?>">Remove upvote</button>
+                                <button class="removeUpvote" name="removeUpvote" id="removeUpvote" type="submit" value="<?php echo $post['id']; ?>">Remove</button>
                             </form>
                         <?php else : ?>
                             <form action="/app/upvotes/upvote.php" method="post">
@@ -31,25 +31,28 @@
 
 
 
-
-                    <?php if (authenticated()) : ?>
-                        <?php if ($post['user_id'] === $_SESSION['loggedIn']['id']) : ?>
-                            <form action="editpost.php" method="post">
-                                <button class="editPost" name="editPostId" id="editPostId" type="submit" value="<?php echo $post['id']; ?>">Edit post</button>
-                            </form>
+                    <div class="postBottom">
+                        <p><?php echo $post['post_date']; ?></p>
+                        <?php if (authenticated()) : ?>
+                            <?php if ($post['user_id'] === $_SESSION['loggedIn']['id']) : ?>
+                                <form action="editpost.php" method="post">
+                                    <button class="editPost" name="editPostId" id="editPostId" type="submit" value="<?php echo $post['id']; ?>">Edit post</button>
+                                </form>
+                            <?php endif; ?>
+                            <?php if ($post['user_id'] === $_SESSION['loggedIn']['id']) : ?>
+                                <form action="/app/posts/deletepost.php" method="post">
+                                    <button class="deletePost" name="delete" id="delete" type="submit" value="<?php echo $post['id']; ?>">Delete</button>
+                                </form>
+                            <?php endif; ?>
                         <?php endif; ?>
-                        <?php if ($post['user_id'] === $_SESSION['loggedIn']['id']) : ?>
-                            <form action="/app/posts/deletepost.php" method="post">
-                                <button class="deletePost" name="delete" id="delete" type="submit" value="<?php echo $post['id']; ?>">Delete</button>
-                            </form>
-                        <?php endif; ?>
-                    <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <div class="commentSection">
-                <p>Comments:</p>
+
                 <?php $comments = getComments($pdo, $post['id']); ?>
                 <?php if ($comments) : ?>
+                    <p>Comments:</p>
                     <?php foreach ($comments as $comment) : ?>
 
                         <div class="comments">

@@ -6,18 +6,24 @@
 } ?>
 <?php $user = $_SESSION['loggedIn']; ?>
 <main>
-    <?php if (isset($_SESSION['message'])) : ?>
-        <p><?php echo $_SESSION['message']; ?></p>
-        <?php unset($_SESSION['message']); ?>
-    <?php endif; ?>
-    <h1><?php echo $user['username']; ?></h1>
-    <img src="/app/users/uploads/<?php echo $user['avatar']; ?>" width="100px">
-    <p>Email: <?php echo $user['email']; ?></p>
-    <p>Biography: <?php echo $user['biography']; ?></p>
-    <a href="/editprofile.php">Edit profile</a>
+    <div class="profile">
+        <?php if (isset($_SESSION['message'])) : ?>
+            <p><?php echo $_SESSION['message']; ?></p>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
+        <h1><?php echo $user['username']; ?></h1>
+        <?php if ($user['avatar'] === null) : ?>
+            <img src="/app/users/uploads/default-avatar.png" width="100px">
+        <?php else : ?>
+            <img src="/app/users/uploads/<?php echo $user['avatar']; ?>" width="100px">
+        <?php endif; ?>
+        <p>Email: <?php echo $user['email']; ?></p>
+        <p>Biography: <?php echo $user['biography']; ?></p>
+        <a href="/editprofile.php">Edit profile</a>
 
-    <a href="createpost.php">Make a post</a>
-    <a href="logout.php">Log out</a>
+
+        <a href="createpost.php">Make a post</a>
+    </div>
 
 
 </main>
