@@ -27,4 +27,4 @@ if (isset($_POST['username'], $_POST['password'])) {
         $_SESSION['noUser'] = "Wrong password";
     }
 }
-header('Location: ../../login.php');
+header('Location: ../../profile.php');

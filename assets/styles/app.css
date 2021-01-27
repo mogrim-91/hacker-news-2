@@ -148,3 +148,61 @@ article button:hover {
 .noAccount a {
   font-size: 24px;
 }
+
+/* Edit profile */
+
+.editProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.imageUpload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.imageUpload form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.editProfileButton {
+  align-self: flex-start;
+  margin-top: 5px;
+}
+.editProfileForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.editProfileForm form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.editProfileForm button {
+  margin-top: 5px;
+  max-width: auto;
+}
+
+/* desktop media query */
+@media screen and (min-width: 992px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+  }
+
+  section {
+    width: 70%;
+  }
+  main {
+    width: 70%;
+  }
+
+
+}
