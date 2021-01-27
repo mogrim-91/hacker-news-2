@@ -1,4 +1,5 @@
 # hacker-news
 Project for Web Developer studies
 
-ooof
+### Code Review by Sandra Danielsson
+Write code review here :)
