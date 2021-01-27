@@ -7,15 +7,18 @@
 <?php $user = $_SESSION['loggedIn']; ?>
 <main>
     <div class="profile">
+
+
         <?php if (isset($_SESSION['message'])) : ?>
             <p><?php echo $_SESSION['message']; ?></p>
             <?php unset($_SESSION['message']); ?>
         <?php endif; ?>
         <h1><?php echo $user['username']; ?></h1>
-        <?php if ($user['avatar'] === null) : ?>
-            <img src="/app/users/uploads/default-avatar.png" width="100px">
+        <?php $avatar = getAvatar($pdo, $_SESSION['loggedIn']['id']); ?>
+        <?php if ($avatar) : ?>
+            <img src="/app/users/uploads/<?php echo $avatar['avatar']; ?>" width="100px">
         <?php else : ?>
-            <img src="/app/users/uploads/<?php echo $user['avatar']; ?>" width="100px">
+            <img src="/app/users/uploads/default-avatar.png" width="100px">
         <?php endif; ?>
         <p>Email: <?php echo $user['email']; ?></p>
         <p>Biography: <?php echo $user['biography']; ?></p>

@@ -79,23 +79,39 @@ function getComments(PDO $pdo, $post_id)
 
 function getPostsByUpvotes(PDO $pdo)
 {
-    $statement = $pdo->prepare('SELECT posts.*, COUNT(upvotes.post_id) as votecount
+    $statement = $pdo->prepare('SELECT posts.*, COUNT(upvotes.post_id) AS votes
     from posts
-    INNER JOIN upvotes
+    LEFT JOIN upvotes
     ON posts.id = upvotes.post_id
     GROUP BY posts.id
-    ORDER BY votecount DESC');
+    ORDER BY upvotes.post_id DESC');
     $statement->execute();
 
-    $posts1 = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+    return $posts;
+}
 
-
-    $statement = $pdo->prepare('SELECT * FROM posts');
+function getPostsByDate(PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT * FROM posts ORDER BY post_date DESC');
     $statement->execute();
 
-    $posts2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    $posts = array_merge($posts1, $posts2);
-    return array_unique($posts);
+    return $posts;
+}
+
+function getAvatar(PDO $pdo, int $userid)
+{
+
+    $statement = $pdo->prepare('SELECT avatar FROM users WHERE id = :id');
+    $statement->bindParam(':id', $userid, PDO::PARAM_INT);
+    $statement->execute();
+
+    $avatar = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($avatar) {
+        return $avatar;
+    }
+    return false;
 }

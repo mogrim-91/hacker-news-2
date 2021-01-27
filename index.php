@@ -3,14 +3,28 @@
 
 
 <main>
-
-    <?php $posts = getPosts($pdo); ?>
+    <div class="orderNavigation">
+        <p>Order by:</p>
+        <a href="/index.php?order=new">Newest</a>
+        <p> | </p>
+        <a href="/index.php">Oldest</a>
+        <p> | </p>
+        <a href="/index.php?order=byvotes">Most Upvotes</a>
+    </div>
+    <?php if (isset($_GET['order'])) : ?>
+        <?php if ($_GET['order'] === "byvotes") : ?>
+            <?php $posts = getPostsByUpvotes($pdo); ?>
+        <?php elseif ($_GET['order'] === "new") : ?>
+            <?php $posts = getPostsByDate($pdo); ?>
+        <?php endif; ?>
+    <?php else : ?>
+        <?php $posts = getPosts($pdo); ?>
+    <?php endif; ?>
     <?php foreach ($posts as $post) : ?>
         <article>
             <div class="postSection">
                 <div class="upvotes">
                     <h2><?php echo countUpvotes($pdo, $post['id']); ?></h2>
-
                     <?php if (authenticated()) : ?>
                         <?php if (hasUpvoted($pdo, $post['id'], $_SESSION['loggedIn']['id'])) : ?>
                             <form action="/app/upvotes/removeupvote.php" method="post">
@@ -26,13 +40,8 @@
                 <div class="post">
                     <a href="<?php echo $post['url']; ?>"><?php echo $post['title']; ?></a>
                     <p><?php echo $post['description']; ?></p>
-
-
-
-
-
                     <div class="postBottom">
-                        <p><?php echo $post['post_date']; ?></p>
+                        <p>By:<?php echo $post['author']; ?> | <?php echo $post['post_date']; ?></p>
                         <?php if (authenticated()) : ?>
                             <?php if ($post['user_id'] === $_SESSION['loggedIn']['id']) : ?>
                                 <form action="editpost.php" method="post">
@@ -49,12 +58,10 @@
                 </div>
             </div>
             <div class="commentSection">
-
                 <?php $comments = getComments($pdo, $post['id']); ?>
                 <?php if ($comments) : ?>
                     <p>Comments:</p>
                     <?php foreach ($comments as $comment) : ?>
-
                         <div class="comments">
                             <strong>By: <?php echo $comment['author']; ?></strong>
                             <p> <?php echo $comment['text']; ?></p>
@@ -70,11 +77,8 @@
                                 <?php endif; ?>
                             <?php endif; ?>
                         </div>
-
-
                     <?php endforeach; ?>
                 <?php endif; ?>
-
 
                 <?php if (authenticated()) : ?>
                     <form action="/app/comments/createcomment.php" method="post">
@@ -86,16 +90,6 @@
             </div>
         </article>
     <?php endforeach; ?>
-
-
 </main>
-
-
-
-
-
-
-
-
 
 <?php require __DIR__ . '/views/footer.php';

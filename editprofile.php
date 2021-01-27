@@ -9,10 +9,11 @@
     <div class="editProfile">
         <h1>Edit Profile</h1>
 
-        <?php if ($user['avatar'] === null) : ?>
-            <img src="/app/users/uploads/default-avatar.png" width="100px">
+        <?php $avatar = getAvatar($pdo, $_SESSION['loggedIn']['id']); ?>
+        <?php if ($avatar) : ?>
+            <img src="/app/users/uploads/<?php echo $avatar['avatar']; ?>" width="100px">
         <?php else : ?>
-            <img src="/app/users/uploads/<?php echo $user['avatar']; ?>" width="100px">
+            <img src="/app/users/uploads/default-avatar.png" width="100px">
         <?php endif; ?>
         <div class="imageUpload">
             <form action="app/users/editprofile.php" method="post" enctype="multipart/form-data">
