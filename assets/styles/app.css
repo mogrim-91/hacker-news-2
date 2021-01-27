@@ -196,6 +196,23 @@ article button:hover {
   max-width: auto;
 }
 
+/* Create post */
+
+.createPostForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.createPostForm form {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.createPostForm button {
+  margin-top: 5px;
+  max-width: auto;
+}
 /* desktop media query */
 @media screen and (min-width: 992px) {
   body {

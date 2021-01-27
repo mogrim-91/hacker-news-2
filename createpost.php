@@ -5,8 +5,9 @@
     Header('Location:/index.php');
 } ?>
 <main>
-    <h1>Create post</h1>
+
     <div class="createPostForm">
+        <h1>Create post</h1>
         <form action="app/posts/createpost.php" method="post">
             <label for="title">Title</label>
             <input type="text" name="title" id="title" placeholder="Title" required>
@@ -16,7 +17,7 @@
 
             <label for="description">Description</label>
             <input type="text" name="description" id="description" required>
-            <button type="submit">Sign up</button>
+            <button type="submit">Post</button>
         </form>
     </div>
 </main>
