@@ -209,19 +209,19 @@ article button:hover {
   max-width: auto;
 }
 
-/* Sign up */
-.signupForm {
+/* Sign up, Edit Post */
+.signupForm, .editPostForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
 }
-.signupForm form {
+.signupForm form, .editPostForm form {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
-.signupForm button {
+.signupForm button, .editPostForm button {
   margin-top: 5px;
   max-width: auto;
 }

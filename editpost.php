@@ -1,13 +1,13 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
-<?php var_dump($_POST['editPostId']); ?>
 <?php if (!authenticated()) {
     Header('Location:/index.php');
 } ?>
 
 <main>
-    <h1>Edit Post</h1>
+
     <div class="editPostForm">
+        <h1>Edit Post</h1>
         <form action="app/posts/editpost.php" method="post">
 
             <label for="editTitle">Edit title</label>
