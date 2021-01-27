@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+// Check if logged in
 function authenticated(): bool
 {
     return isset($_SESSION['loggedIn']['username']);
@@ -112,6 +113,34 @@ function getAvatar(PDO $pdo, int $userid)
     $avatar = $statement->fetch(PDO::FETCH_ASSOC);
     if ($avatar) {
         return $avatar;
+    }
+    return false;
+}
+
+function checkIfUsernameIsTaken(PDO $pdo, string $username): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+    $statement->bindParam(':username', $username, PDO::PARAM_STR);
+    $statement->execute();
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
+        return true;
+    }
+    return false;
+}
+
+function checkIfEmailIsTaken(PDO $pdo, string $email): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    $statement->bindParam(':email', $email, PDO::PARAM_STR);
+    $statement->execute();
+
+    $email = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($email) {
+        return true;
     }
     return false;
 }
