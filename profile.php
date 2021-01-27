@@ -16,14 +16,6 @@
     <p>Biography: <?php echo $user['biography']; ?></p>
     <a href="/editprofile.php">Edit profile</a>
 
-
-
-
-
-
-
-    <p><?php print_r($_SESSION['loggedIn']); ?></p>
-    <p><?php print_r($_FILES); ?></p>
     <a href="createpost.php">Make a post</a>
     <a href="logout.php">Log out</a>
 

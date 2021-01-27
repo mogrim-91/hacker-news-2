@@ -10,5 +10,9 @@
 </head>
 
 <body>
-    <a href="/index.php">Hacker News!</a>
-    <?php require __DIR__ . '/navigation.php'; ?>
+    <section class="top">
+        <a href="/index.php">
+            <h1>Hacker News!</h1>
+        </a>
+        <?php require __DIR__ . '/navigation.php'; ?>
+    </section>

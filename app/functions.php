@@ -76,3 +76,26 @@ function getComments(PDO $pdo, $post_id)
 
     return false;
 }
+
+function getPostsByUpvotes(PDO $pdo)
+{
+    $statement = $pdo->prepare('SELECT posts.*, COUNT(upvotes.post_id) as votecount
+    from posts
+    INNER JOIN upvotes
+    ON posts.id = upvotes.post_id
+    GROUP BY posts.id
+    ORDER BY votecount DESC');
+    $statement->execute();
+
+    $posts1 = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+    $statement = $pdo->prepare('SELECT * FROM posts');
+    $statement->execute();
+
+    $posts2 = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $posts = array_merge($posts1, $posts2);
+    return array_unique($posts);
+}

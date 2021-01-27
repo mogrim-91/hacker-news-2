@@ -1,9 +1,12 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   font-family: sans-serif;
+  background-color: grey;
 }
 
 .signupForm {
@@ -11,20 +14,68 @@ body {
 
   color: green;
 }
-main {
-  display: flex;
-  flex-direction: column;
-}
+
 
 .editForm {
   display: flex;
   flex-direction: column;
   width: 30%;
 }
-article {
-  border: 1px solid black;
-}
+
 div {
   border: 1px solid black;
 }
+/* Header */
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: orange;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.navigation {
+  justify-self: flex-start;
+}
+.navItem {
+  font-size: 26px;
+  justify-self: flex-end;
+}
 
+
+/* Main */
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 20px;
+  border: 1px solid brown;
+  background-color: white;
+}
+article {
+  border: 1px solid black;
+  margin-bottom 10px;
+  padding: 10px;
+}
+article a:link {
+  text-decoration: none;
+  font-size: 20px;
+}
+article a:hover {
+  text-decoration: underline;
+}
+article button {
+  border: 0;
+  padding: 0;
+  background: white;
+}
+article button:hover {
+  text-decoration: underline;
+}
+
+.postSection {
+  display: flex;
+}
