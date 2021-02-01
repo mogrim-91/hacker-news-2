@@ -9,8 +9,6 @@ body {
   background-color: grey;
 }
 
-
-
 .editForm {
   display: flex;
   flex-direction: column;
@@ -38,7 +36,6 @@ div {
   font-size: 26px;
   justify-self: flex-end;
 }
-
 
 /* Main */
 
@@ -108,6 +105,11 @@ article button:hover {
   padding: 10px;
 }
 
+.replies {
+  position: relative;
+  left: 45px;
+  padding: 10px;
+}
 
 /* Profile */
 .profile {
@@ -191,6 +193,71 @@ article button:hover {
   max-width: auto;
 }
 
+/* Delete Account @ editprofile.php */
+
+.deleteAccountContainer {
+  display: flex;
+  max-width: 300px;
+  align-content: center;
+  background-color: lightcoral;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 30px;
+  width: 50%;
+  padding: 3%;
+}
+
+.deleteAccountText {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+}
+
+.deleteAccountButton {
+  display: flex;
+  justify-content: center;
+}
+
+/* Delete Account @ deleteaccount.php */
+.deleteAccountFinalContainer {
+  display: flex;
+  background-color: lightcoral;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 3%;
+  margin: 10%;
+}
+
+.deleteAccountFinalButton {
+  justify-content: center;
+  width: 60%;
+  padding: 0.5%;
+}
+
+/* Deletion Confirmed @ deletionconfirmed.php */
+.deletionConfirmedMsg {
+  display: flex;
+  background-color: lightgreen;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 3%;
+  margin: 10%;
+}
+
+h3 {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-decoration: underline;
+}
+
 /* Create post */
 
 .createPostForm {
@@ -210,18 +277,21 @@ article button:hover {
 }
 
 /* Sign up, Edit Post */
-.signupForm, .editPostForm {
+.signupForm,
+.editPostForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px;
 }
-.signupForm form, .editPostForm form {
+.signupForm form,
+.editPostForm form {
   display: flex;
   flex-direction: column;
   padding: 10px;
 }
-.signupForm button, .editPostForm button {
+.signupForm button,
+.editPostForm button {
   margin-top: 5px;
   max-width: auto;
 }
@@ -240,6 +310,4 @@ article button:hover {
   main {
     width: 70%;
   }
-
-
 }

@@ -55,9 +55,17 @@
 
                 <button type="submit">Edit profile</button>
 
-
             </form>
         </div>
+
+        <div class="deleteAccountContainer">
+            <h3>⚠️ Danger Zone ⚠️</h3>
+            <p class="deleteAccountText">Do you want to delete your account?</p>
+            <br>
+            <button class="deleteAccountButton" type="submit"><a href="/deleteaccount.php">Yes</a></button>
+        </div>
+        <br>
+
     </div>
 </main>
 

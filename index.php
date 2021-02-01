@@ -1,7 +1,6 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
 
-
 <main>
     <div class="orderNavigation">
         <p>Order by:</p>
@@ -66,28 +65,53 @@
                             <strong>By: <?php echo $comment['author']; ?></strong>
                             <p> <?php echo $comment['text']; ?></p>
                             <p> Posted: <?php echo $comment['date']; ?></p>
-                            <?php if (authenticated()) : ?>
-                                <?php if ($_SESSION['loggedIn']['id'] === $comment['user_id']) : ?>
-                                    <form action="editcomment.php" method="post">
-                                        <button class="editComment" name="editCommentId" id="editCommentId" type="submit" value="<?php echo $comment['id']; ?>">Edit comment</button>
-                                    </form>
-                                    <form action="/app/comments/deletecomment.php" method="post">
-                                        <button class="deleteComment" name="deleteCommentId" id="deleteCommentId" type="submit" value="<?php echo $comment['id']; ?>">Delete comment</button>
-                                    </form>
-                                <?php endif; ?>
+                        </div>
+                        <?php if (authenticated()) : ?>
+                            <?php if ($_SESSION['loggedIn']['id'] === $comment['user_id']) : ?>
+                                <form action="editcomment.php" method="post">
+                                    <button class="editComment" name="editCommentId" id="editCommentId" type="submit" value="<?php echo $comment['id']; ?>">Edit comment</button>
+                                </form>
+                                <form action="/app/comments/deletecomment.php" method="post">
+                                    <button class="deleteComment" name="deleteCommentId" id="deleteCommentId" type="submit" value="<?php echo $comment['id']; ?>">Delete comment</button>
+                                </form>
                             <?php endif; ?>
+                        <?php endif; ?>
+                        <div class="replySection">
+                            <?php $commentReplies = getCommentReplies($pdo, $comment['id']); ?>
+                            <?php if ($commentReplies) : ?>
+                                <p class="replies">Replies:</p>
+                                <?php foreach ($commentReplies as $reply) : ?>
+                                    <div class="comment replies">
+                                        <strong>To: <?php echo $reply['comment_author']; ?></strong>
+                                        <strong>By: <?php echo $reply['author']; ?></strong>
+                                        <p> <?php echo $reply['text']; ?></p>
+                                        <p> Posted: <?php echo $reply['date']; ?></p>
+                                    </div>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
                 <?php if (authenticated()) : ?>
-                    <form action="/app/comments/createcomment.php" method="post">
-                        <label for="comment">Comment:</label>
-                        <input type="text" name="comment" id="comment">
-                        <button class="commentButton" name="commentPostId" id="commentPostId" value="<?php echo $post['id']; ?>" type="submit">Publish</button>
-                    </form>
+                    <?php if ($_SESSION['loggedIn']['id'] !== $comment['user_id']) : ?>
+                        <div class="replySection replies">
+                            <form action="/app/comments/createreply.php" method="post">
+                                <label for="comment">Reply:</label>
+                                <input type="text" name="replyComment" id="replyComment">
+                                <button class="replyButton" name="replyCommentId" id="replyCommentId" value="<?php echo $comment['id']; ?>" type="submit">Publish</button>
+                            </form>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+    <?php if (authenticated()) : ?>
+        <form action="/app/comments/createcomment.php" method="post">
+            <label for="comment">Comment:</label>
+            <input type="text" name="comment" id="comment">
+            <button class="commentButton" name="commentPostId" id="commentPostId" value="<?php echo $post['id']; ?>" type="submit">Publish</button>
+        </form>
+    <?php endif; ?>
+    </div>
         </article>
     <?php endforeach; ?>
 </main>

@@ -78,6 +78,21 @@ function getComments(PDO $pdo, $post_id)
     return false;
 }
 
+function getCommentReplies(PDO $pdo, $comment_id)
+{
+    $statement = $pdo->prepare('SELECT * FROM comment_replies WHERE comment_id = :comment_id ORDER BY date ASC');
+    $statement->bindParam(':comment_id', $comment_id, PDO::PARAM_INT);
+    $statement->execute();
+
+    $replies = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if ($replies) {
+        return $replies;
+    }
+
+    return false;
+}
+
+
 function getPostsByUpvotes(PDO $pdo)
 {
     $statement = $pdo->prepare('SELECT posts.*, COUNT(upvotes.post_id) AS votes
