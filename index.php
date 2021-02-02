@@ -83,7 +83,7 @@
                                 <?php foreach ($commentReplies as $reply) : ?>
                                     <div class="comment replies">
                                         <strong>To: <?php echo $reply['comment_author']; ?></strong>
-                                        <strong>By: <?php echo $reply['author']; ?></strong>
+                                        <strong>From: <?php echo $reply['author']; ?></strong>
                                         <p> <?php echo $reply['text']; ?></p>
                                         <p> Posted: <?php echo $reply['date']; ?></p>
                                     </div>
