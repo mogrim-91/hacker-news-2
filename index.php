@@ -99,8 +99,8 @@
                                 <button class="replyButton" name="replyCommentId" id="replyCommentId" value="<?php echo $comment['id']; ?>" type="submit">Publish</button>
                             </form>
                         </div>
-                    <?php endif; ?>
-                <?php endif; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
             </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -110,7 +110,7 @@
             <input type="text" name="comment" id="comment">
             <button class="commentButton" name="commentPostId" id="commentPostId" value="<?php echo $post['id']; ?>" type="submit">Publish</button>
         </form>
-    <?php endif; ?>
+        <?php endif; ?>
     </div>
         </article>
     <?php endforeach; ?>
