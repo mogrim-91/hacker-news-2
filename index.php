@@ -88,10 +88,10 @@
                                         <p> Posted: <?php echo $reply['date']; ?></p>
                                     </div>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                <?php if (authenticated()) : ?>
-                    <?php if ($_SESSION['loggedIn']['id'] !== $comment['user_id']) : ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        <?php if (authenticated()) : ?>
+                            <?php if ($_SESSION['loggedIn']['id'] !== $comment['user_id']) : ?>
                         <div class="replySection replies">
                             <form action="/app/comments/createreply.php" method="post">
                                 <label for="comment">Reply:</label>
@@ -102,9 +102,9 @@
                     <?php endif; ?>
                 <?php endif; ?>
             </div>
-        <?php endforeach; ?>
-    <?php endif; ?>
-    <?php if (authenticated()) : ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+        <?php if (authenticated()) : ?>
         <form action="/app/comments/createcomment.php" method="post">
             <label for="comment">Comment:</label>
             <input type="text" name="comment" id="comment">
